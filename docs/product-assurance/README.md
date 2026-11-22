@@ -14,7 +14,7 @@ This is the **first usable increment**, not the complete seven-skill product ass
 - [Local Python installer](../../scripts/install_cross_examine.py) for copying the skill into project agent directories.
 - [Runtime requirements](../../skills/cross-examine/requirements.txt) and [setup instructions](../../skills/cross-examine/references/runtime-setup.md) included with installations.
 - [Synthetic examples](../../examples/cross-examine/) for children + AI, personal finance, multi-tenant SaaS and a completed discovery record for a simple offline timer.
-- [Workspace tests](../../tests/cross-examine/) and [pending agent evaluations](../../evals/cross-examine/agent-evaluation.md).
+- [Workspace tests](../../tests/cross-examine/) and [agent evaluation scenarios/status](../../evals/cross-examine/agent-evaluation.md).
 
 ## Install in a project
 
@@ -85,7 +85,7 @@ python3 -m venv .venv
 .venv/bin/python scripts/check_install.py
 ```
 
-Validation includes every test suite; installation checks additionally need Node.js 22.20+. Tests verify the supplied synthetic fixtures and workspace invariants. They **do not** validate legal conclusions or agent interviewing quality. [Live agent evaluations](../../evals/cross-examine/agent-evaluation.md) are a later milestone. See [CONTRIBUTING.md](../../CONTRIBUTING.md) for CI and contribution guidance.
+Validation includes every test suite; installation checks additionally need Node.js 22.20+. Tests verify the supplied synthetic fixtures and workspace invariants. They **do not** validate legal conclusions or agent interviewing quality. One single-turn [Codex pilot review](../../evals/cross-examine/results/2026-11-22-codex-case-a.md) is available; the complete behavior suite remains pending. See [CONTRIBUTING.md](../../CONTRIBUTING.md) for CI and contribution guidance.
 
 ## Security and limitations
 

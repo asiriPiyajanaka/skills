@@ -1,0 +1,3 @@
+The parent owns the account, but the six-year-old is the lesson user and may be identifiable from answers or associated data. Account ownership alone doesn’t establish that no personal information is collected. I’ve recorded that claim as **unverified**, along with the reported AI data flow and open questions, in the validated [discovery workspace](/private/tmp/cross-examine-eval.rJbrY0/pilot/.product-assurance/workspace.json).
+
+**What exactly is sent to the AI provider along with a child’s lesson answer**—for example, account or session identifiers, prompts, or other context? A description of the fields is enough; please don’t share actual children’s answers. This determines whether the provider could link answers to a child or parent.

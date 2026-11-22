@@ -1,0 +1,319 @@
+{
+  "schema_version": "2.0.0",
+  "project": {
+    "id": "PRD-001",
+    "name": "Children’s lesson app",
+    "summary": "A parent pays for an account and a six-year-old plays lessons; lesson answers are sent to an AI provider.",
+    "stage": "unknown",
+    "product_types": [
+      "ai_system"
+    ],
+    "business_model": "Parent pays; payment model unknown",
+    "source": "developer_reported"
+  },
+  "distribution": {
+    "platforms": [],
+    "channels": [],
+    "business_country_codes": [],
+    "target_country_codes": [],
+    "accessible_country_codes": [],
+    "access_restriction": "unknown",
+    "notes": "Do not infer applicable law from accessibility alone"
+  },
+  "actors": [
+    {
+      "id": "ACT-0001",
+      "role": "Parent: account holder and payer",
+      "age_band": "unknown",
+      "account_relationship": "Owns account and pays",
+      "notes": "Authority and consent process not yet established",
+      "source": "developer_reported",
+      "confidence": "reported"
+    },
+    {
+      "id": "ACT-0002",
+      "role": "Child lesson user",
+      "age_band": "under_13",
+      "account_relationship": "Uses parent-owned account",
+      "notes": "Six years old; may be subject of lesson data",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "features": [
+    {
+      "id": "FEAT-0001",
+      "name": "Lessons",
+      "description": "Child plays lessons and supplies answers",
+      "state": "unknown",
+      "actor_ids": [
+        "ACT-0002"
+      ],
+      "risk_domains": [
+        "children",
+        "privacy",
+        "ai"
+      ],
+      "source": "developer_reported",
+      "confidence": "reported"
+    },
+    {
+      "id": "FEAT-0002",
+      "name": "Account and payment",
+      "description": "Parent signs up and pays",
+      "state": "unknown",
+      "actor_ids": [
+        "ACT-0001"
+      ],
+      "risk_domains": [
+        "privacy",
+        "payments"
+      ],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "data_categories": [
+    {
+      "id": "DATA-0001",
+      "name": "Child lesson answers",
+      "subject_actor_ids": [
+        "ACT-0002"
+      ],
+      "identifiability": "unknown",
+      "sensitivity": "unknown",
+      "retention": "unknown",
+      "deletion": "unknown",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "data_flows": [
+    {
+      "id": "FLOW-0001",
+      "feature_ids": [
+        "FEAT-0001"
+      ],
+      "data_category_ids": [
+        "DATA-0001"
+      ],
+      "subject_actor_ids": [
+        "ACT-0002"
+      ],
+      "from": "App",
+      "to": "AI provider",
+      "purpose": "Unknown",
+      "third_party_id": "VEND-0001",
+      "cross_border": "unknown",
+      "countries": [],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "third_parties": [
+    {
+      "id": "VEND-0001",
+      "name": "Unidentified AI provider",
+      "service": "Receives lesson answers; specific processing purpose unknown",
+      "data_category_ids": [
+        "DATA-0001"
+      ],
+      "contract_status": "unknown",
+      "processing_locations": [],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "jurisdictions": [],
+  "claims": [
+    {
+      "id": "CLM-0001",
+      "statement": "No personal information is collected because the parent owns the account",
+      "source": "developer_reported",
+      "verification": "unverified",
+      "evidence_refs": [],
+      "related_ids": [
+        "ACT-0001",
+        "ACT-0002",
+        "DATA-0001",
+        "FLOW-0001"
+      ],
+      "notes": "Account ownership alone does not establish whether information identifies or relates to a child or parent."
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "UNK-0001",
+      "question": "What exactly is sent with lesson answers and can it identify or be linked to a child or parent?",
+      "risk_if_unresolved": "Child-related or account-linked information may be overlooked.",
+      "priority": "high",
+      "status": "open",
+      "related_ids": [
+        "DATA-0001",
+        "FLOW-0001",
+        "CLM-0001"
+      ],
+      "owner": "unassigned — identify owner",
+      "next_action": "Map sample-free payload fields, identifiers, metadata and linkability."
+    },
+    {
+      "id": "UNK-0002",
+      "question": "Which AI provider receives data and what are its processing, retention, training and review terms?",
+      "risk_if_unresolved": "Undocumented onward use and retention may affect architecture and obligations.",
+      "priority": "high",
+      "status": "open",
+      "related_ids": [
+        "VEND-0001",
+        "FLOW-0001"
+      ],
+      "owner": "unassigned — identify owner",
+      "next_action": "Identify provider and review current service configuration and terms."
+    },
+    {
+      "id": "UNK-0003",
+      "question": "Where is the business established, whom does it target, and where is data processed?",
+      "risk_if_unresolved": "Research scope and potential transfer issues cannot be determined.",
+      "priority": "high",
+      "status": "open",
+      "related_ids": [
+        "FLOW-0001"
+      ],
+      "owner": "unassigned — identify owner",
+      "next_action": "Record establishment, target/access markets and provider processing locations."
+    },
+    {
+      "id": "UNK-0004",
+      "question": "What account, payment and consent information is collected and how is parental authority handled?",
+      "risk_if_unresolved": "Account ownership alone may not address child data or applicable consent requirements.",
+      "priority": "high",
+      "status": "open",
+      "related_ids": [
+        "ACT-0001",
+        "ACT-0002",
+        "FEAT-0002"
+      ],
+      "owner": "unassigned — identify owner",
+      "next_action": "Map account and payment fields and parent authorization process."
+    }
+  ],
+  "risk_signals": [
+    {
+      "id": "SIG-0001",
+      "domain": "children",
+      "trigger": "A six-year-old uses lessons under a parent account; child-related answers are sent externally.",
+      "potential_impact": "high",
+      "related_ids": [
+        "ACT-0002",
+        "FLOW-0001",
+        "UNK-0004"
+      ],
+      "status": "hypothesis"
+    },
+    {
+      "id": "SIG-0002",
+      "domain": "ai",
+      "trigger": "Lesson answers go to an unidentified AI provider with unknown retention and use.",
+      "potential_impact": "high",
+      "related_ids": [
+        "FLOW-0001",
+        "UNK-0001",
+        "UNK-0002"
+      ],
+      "status": "hypothesis"
+    }
+  ],
+  "interview": {
+    "status": "in_progress",
+    "current_focus": "Contents and linkability of AI-bound lesson data",
+    "question_history": [
+      {
+        "id": "Q-0001",
+        "question": "Initial product description",
+        "answer_summary": "Developer reports parent signup and payment, six-year-old lesson use, answers sent to an AI provider, and asserts no personal information is collected because the parent owns the account.",
+        "answered_at": "2026-11-22T06:46:01.913834+00:00",
+        "updated_ids": [
+          "ACT-0001",
+          "ACT-0002",
+          "FEAT-0001",
+          "FEAT-0002",
+          "DATA-0001",
+          "FLOW-0001",
+          "VEND-0001",
+          "CLM-0001",
+          "UNK-0001",
+          "UNK-0002",
+          "UNK-0003",
+          "UNK-0004",
+          "SIG-0001",
+          "SIG-0002"
+        ]
+      }
+    ],
+    "coverage": [
+      {
+        "domain": "product_and_business",
+        "status": "in_progress",
+        "reason": "Initial developer description recorded; material details remain unknown."
+      },
+      {
+        "domain": "actors_and_age",
+        "status": "in_progress",
+        "reason": "Initial developer description recorded; material details remain unknown."
+      },
+      {
+        "domain": "markets_and_distribution",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "features_and_content",
+        "status": "in_progress",
+        "reason": "Initial developer description recorded; material details remain unknown."
+      },
+      {
+        "domain": "data_inventory_and_flows",
+        "status": "in_progress",
+        "reason": "Initial developer description recorded; material details remain unknown."
+      },
+      {
+        "domain": "device_permissions_and_tracking",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "ai_and_third_parties",
+        "status": "in_progress",
+        "reason": "Initial developer description recorded; material details remain unknown."
+      },
+      {
+        "domain": "security_and_access",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "payments_and_marketing",
+        "status": "in_progress",
+        "reason": "Initial developer description recorded; material details remain unknown."
+      },
+      {
+        "domain": "regulated_activities_and_ip",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "retention_rights_and_operations",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "accessibility_and_user_harm",
+        "status": "not_assessed",
+        "reason": ""
+      }
+    ],
+    "next_questions": [
+      "What exactly is sent to the AI provider along with a child’s lesson answer, including identifiers or account/session metadata?"
+    ],
+    "last_updated": "2026-11-22T06:46:01.913834+00:00"
+  }
+}

@@ -7,6 +7,7 @@
 3. **Four synthetic scenario fixtures** and structural/regression tests, including a completed discovery profile and cases for contradictions, resumption, missing dependencies and invalid inputs.
 4. **Explicit v1 migration** — writes a reviewable v2 candidate without overwriting the source or fabricating evidence.
 5. **Repository validation and CI** — Python 3.10/3.14 test matrix, temporary-project installs, detached runtime checks, and anonymous public-commit installation after default-branch pushes.
+6. **One Codex Case A pilot reviewed** — [saved response, workspace, usage and manual assessment](../../evals/cross-examine/results/2026-11-22-codex-case-a.md). This is not a complete scenario or suite pass; remaining runs require an agreed scope.
 
 ## Planned; not implemented
 

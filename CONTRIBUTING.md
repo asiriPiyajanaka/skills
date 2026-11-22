@@ -21,7 +21,7 @@ python3 -m venv .venv
 
 The command discovers skills and checks their frontmatter, directory names, bundled licenses, local documentation/resource links, JSON schemas and Python 3.10 syntax. It then discovers and runs every directory containing `test_*.py` under `tests/`, including the workspace fixtures and recording invariants. Use `--static-only` to skip test execution.
 
-These checks do not evaluate legal conclusions or the quality of an agent's interview. The [agent evaluation cases](evals/cross-examine/agent-evaluation.md) describe that separate, pending work.
+These checks do not evaluate legal conclusions or the quality of an agent's interview. The [agent evaluation cases](evals/cross-examine/agent-evaluation.md) track that separate work, including one reviewed Codex pilot and the remaining untested scenarios. Agree the number of runs and stopping conditions before executing any further model evaluations.
 
 ## Installation checks and CI
 

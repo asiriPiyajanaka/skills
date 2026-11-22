@@ -1,0 +1,3 @@
+Use $cross-examine from .agents/skills/cross-examine. A parent signs up, pays, and lets a 6-year-old play lessons. The app sends lesson answers to an AI provider. We don't collect personal information because the parent owns the account.
+
+The project root is the current directory. For the installed workspace helper, Python with its validation dependencies is available at /private/tmp/skills-validation-0d7p03mh/py314/bin/python.

@@ -6,7 +6,7 @@ My public collection of reusable skills for coding agents. Each skill lives in i
 
 | Skill | What it does | Status |
 | --- | --- | --- |
-| [cross-examine](skills/cross-examine/SKILL.md) | Uses adaptive questions to record product facts, assumptions, data flows, risks and unknowns. | Workspace v2 tooling and installation checks; live agent evaluations pending. |
+| [cross-examine](skills/cross-examine/SKILL.md) | Uses adaptive questions to record product facts, assumptions, data flows, risks and unknowns. | Workspace v2; one Codex pilot reviewed; full agent evaluation pending. |
 
 `cross-examine` is the first skill in the [product-assurance workflow](docs/product-assurance/README.md). Related skills are described in its [roadmap](docs/product-assurance/ROADMAP.md); they are not yet implemented or installable.
 
@@ -43,7 +43,7 @@ Challenge assumptions, ask one question at a time, and record the product profil
 and unknowns in .product-assurance/workspace.json.
 ```
 
-The skill captures discovery facts and risk hypotheses. It does not certify legal compliance or release readiness. Agent behavior evaluations have not yet been run; see the [evaluation scenarios](evals/cross-examine/agent-evaluation.md).
+The skill captures discovery facts and risk hypotheses. It does not certify legal compliance or release readiness. One single-turn [Codex pilot has been reviewed](evals/cross-examine/results/2026-11-22-codex-case-a.md); the full suite and other agents remain untested. See the [evaluation scenarios](evals/cross-examine/agent-evaluation.md).
 
 ## Repository layout
 

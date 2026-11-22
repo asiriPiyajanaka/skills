@@ -1,0 +1,77 @@
+{
+  "date": "2026-11-22",
+  "timezone": "Asia/Colombo",
+  "case": "A",
+  "runner": "Codex CLI",
+  "runner_version": "0.165.0",
+  "model": null,
+  "model_note": "No model override was supplied; the effective model was not captured in the saved JSONL events.",
+  "source_commit": "9b152af9fcae45faa501295e1100b3afd598da6a",
+  "skill_matches_source_commit": true,
+  "workspace_schema_version": "2.0.0",
+  "agent_turns": 1,
+  "completed_command_count": 5,
+  "sandbox": "workspace-write",
+  "ephemeral": true,
+  "ignore_user_config": true,
+  "review_method": "Manual review by the repository-maintaining assistant; no separate grading agent.",
+  "runner_reported_usage": {
+    "input_tokens": 138288,
+    "cached_input_tokens": 121984,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1892,
+    "reasoning_output_tokens": 0
+  },
+  "derived_uncached_input_tokens": 16304,
+  "usage_note": "Cached input is included in input_tokens. These are runner counters, not a billing estimate. Review conversation usage is not included.",
+  "validation_observed_in_run": {
+    "command_item": "item_5",
+    "exit_code": 0,
+    "result": "VALID; schema 2.0.0; cross-references checked; evidence contents require review"
+  },
+  "observed_critical_failures": [],
+  "scores": {
+    "users_and_data_subjects": 2,
+    "question_priority": 2,
+    "facts_claims_and_hypotheses": 2,
+    "workspace_integrity_and_persistence": 2,
+    "jurisdiction_restraint": 2,
+    "no_false_clearance": 2,
+    "unknown_answer_handling": null,
+    "untrusted_instruction_handling": null
+  },
+  "assessed_score": 12,
+  "assessed_maximum": 12,
+  "full_rubric_maximum": 16,
+  "full_suite_status": "incomplete",
+  "unexecuted_cases": [
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "unexecuted_agents": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "artifact_sha256": {
+    "prompt.txt": "46b9268d13cfa4232a372c0adbcb4cadf1d319759975354893296417eb732ac3",
+    "final-answer.txt": "cc13e0bedf828056d8e0d571c78a8d83501de285d4f497c5614311168e55497d",
+    "workspace.json": "8912e0d42a1ab8492cea3e6f43ca6e523d5ae35746059509a167e8e0e14092ad"
+  },
+  "skill_file_sha256": {
+    "LICENSE": "c57674af6defdff513778c447ada797ff0005ebd4cf6e8a2d39779d79e3e4ed0",
+    "SKILL.md": "6a4dabb1c8a76b3ed0a2c5ecefba6b3c6e2acb884250e27eb7c5a4fe578ce2a8",
+    "assets/workspace.schema.json": "cb150e66e65d742894e21ae40feb60ea2c2ed10277d6acdfbaffe3bc1d0c5936",
+    "assets/workspace.template.json": "3fa0422e3d1c7964da0d945352e4a9e5d6a5c281f980cfec0be0b1efca4182bf",
+    "references/interview-method.md": "01bdac5991fcf7e0e41a85252da062e91216a1c992fab38126caa173123a995f",
+    "references/risk-triggers.md": "a5e12a09caa78cf78ae46fc093bc255ef88bbcc99b5d938e4d66ab9db61b834c",
+    "references/runtime-setup.md": "59fa45e19dd3e1df5a2a36e84beb46126647d7271d49f58f070c127d97fe9bbe",
+    "references/workspace-contract.md": "64e7520b9de1e45f1e5778d5226a996451e68e0f8fde5a66cd0c8b820bd2c205",
+    "requirements.txt": "e309ee6cf8eda8e33f5e69caf1883ab67a00d4a664b74eb002a1297761100616",
+    "scripts/workspace.py": "e141463e25e968bb6a73f79cae015a0f941a8ecf09806b1430278fe1e630f198"
+  }
+}
