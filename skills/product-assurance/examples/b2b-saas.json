@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0.0",
+  "project": {
+    "id": "PRD-001",
+    "name": "Synthetic multi-tenant SaaS",
+    "summary": "Browser-based workspace project management with subscription billing and file uploads",
+    "stage": "pre_release",
+    "product_types": [
+      "saas",
+      "web_app"
+    ],
+    "business_model": "paid monthly plans",
+    "source": "developer_reported"
+  },
+  "distribution": {
+    "platforms": [
+      "web",
+      "server"
+    ],
+    "channels": [
+      "direct_web"
+    ],
+    "business_country_codes": [
+      "US"
+    ],
+    "target_country_codes": [
+      "US",
+      "DE"
+    ],
+    "accessible_country_codes": [],
+    "access_restriction": "open",
+    "notes": "Do not infer applicable law from accessibility alone"
+  },
+  "actors": [
+    {
+      "id": "ACT-0001",
+      "role": "Organization member",
+      "age_band": "adult",
+      "account_relationship": "Invited to tenant workspace",
+      "notes": "Business user and data subject",
+      "source": "developer_reported",
+      "confidence": "reported"
+    },
+    {
+      "id": "ACT-0002",
+      "role": "Workspace administrator",
+      "age_band": "adult",
+      "account_relationship": "Manages members and billing",
+      "notes": "Privileged actions",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "features": [
+    {
+      "id": "FEAT-0001",
+      "name": "Project file sharing",
+      "description": "Tenant-owned files retrievable via API",
+      "state": "implemented",
+      "actor_ids": [
+        "ACT-0001",
+        "ACT-0002"
+      ],
+      "risk_domains": [
+        "security",
+        "privacy"
+      ],
+      "source": "repository_observed",
+      "confidence": "observed"
+    }
+  ],
+  "data_categories": [
+    {
+      "id": "DATA-0001",
+      "name": "Uploaded workspace documents",
+      "subject_actor_ids": [
+        "ACT-0001"
+      ],
+      "identifiability": "unknown",
+      "sensitivity": "unknown",
+      "retention": "Unknown",
+      "deletion": "Unknown",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "data_flows": [
+    {
+      "id": "FLOW-0001",
+      "feature_ids": [
+        "FEAT-0001"
+      ],
+      "data_category_ids": [
+        "DATA-0001"
+      ],
+      "subject_actor_ids": [
+        "ACT-0001"
+      ],
+      "from": "User browser",
+      "to": "Tenant file API",
+      "purpose": "Collaborative project management",
+      "third_party_id": null,
+      "cross_border": "unknown",
+      "countries": [],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "third_parties": [],
+  "jurisdictions": [
+    {
+      "id": "JUR-0001",
+      "country_code": "DE",
+      "relationship": [
+        "user_targeting"
+      ],
+      "applicability": "research_needed",
+      "rationale": "EU customer targeting; exact legal obligations require verification",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "claims": [],
+  "unknowns": [
+    {
+      "id": "UNK-0001",
+      "question": "Does every object-level file endpoint verify tenant scope and permissions?",
+      "risk_if_unresolved": "Unauthorized cross-tenant file access",
+      "priority": "critical",
+      "status": "open",
+      "related_ids": [
+        "FEAT-0001",
+        "FLOW-0001"
+      ],
+      "owner": "Backend team",
+      "next_action": "Audit object authorization and add cross-tenant negative tests"
+    }
+  ],
+  "risk_signals": [
+    {
+      "id": "SIG-0001",
+      "domain": "security",
+      "trigger": "Multi-tenant file API with unverified object-level authorization",
+      "potential_impact": "critical",
+      "related_ids": [
+        "FEAT-0001",
+        "UNK-0001"
+      ],
+      "status": "hypothesis"
+    }
+  ],
+  "interview": {
+    "status": "in_progress",
+    "current_focus": null,
+    "question_history": [],
+    "coverage": [
+      {
+        "domain": "product_and_business",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "actors_and_age",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "markets_and_distribution",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "features_and_content",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "data_inventory_and_flows",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "device_permissions_and_tracking",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "ai_and_third_parties",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "security_and_access",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "payments_and_marketing",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "regulated_activities_and_ip",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "retention_rights_and_operations",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "accessibility_and_user_harm",
+        "status": "not_assessed",
+        "reason": ""
+      }
+    ],
+    "next_questions": [],
+    "last_updated": null
+  }
+}

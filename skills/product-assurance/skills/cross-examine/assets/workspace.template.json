@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "project": {
+    "id": "PRD-001",
+    "name": "Untitled product",
+    "summary": "Unknown — ask the developer",
+    "stage": "idea",
+    "product_types": [],
+    "business_model": "unknown",
+    "source": "developer_reported"
+  },
+  "distribution": {
+    "platforms": [],
+    "channels": [],
+    "business_country_codes": [],
+    "target_country_codes": [],
+    "accessible_country_codes": [],
+    "access_restriction": "unknown",
+    "notes": "Do not infer applicable law from accessibility alone"
+  },
+  "actors": [],
+  "features": [],
+  "data_categories": [],
+  "data_flows": [],
+  "third_parties": [],
+  "jurisdictions": [],
+  "claims": [],
+  "unknowns": [],
+  "risk_signals": [],
+  "interview": {
+    "status": "not_started",
+    "current_focus": null,
+    "question_history": [],
+    "coverage": [
+      {"domain": "product_and_business", "status": "not_assessed", "reason": ""},
+      {"domain": "actors_and_age", "status": "not_assessed", "reason": ""},
+      {"domain": "markets_and_distribution", "status": "not_assessed", "reason": ""},
+      {"domain": "features_and_content", "status": "not_assessed", "reason": ""},
+      {"domain": "data_inventory_and_flows", "status": "not_assessed", "reason": ""},
+      {"domain": "device_permissions_and_tracking", "status": "not_assessed", "reason": ""},
+      {"domain": "ai_and_third_parties", "status": "not_assessed", "reason": ""},
+      {"domain": "security_and_access", "status": "not_assessed", "reason": ""},
+      {"domain": "payments_and_marketing", "status": "not_assessed", "reason": ""},
+      {"domain": "regulated_activities_and_ip", "status": "not_assessed", "reason": ""},
+      {"domain": "retention_rights_and_operations", "status": "not_assessed", "reason": ""},
+      {"domain": "accessibility_and_user_harm", "status": "not_assessed", "reason": ""}
+    ],
+    "next_questions": [],
+    "last_updated": null
+  }
+}

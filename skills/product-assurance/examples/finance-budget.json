@@ -1,0 +1,212 @@
+{
+  "schema_version": "1.0.0",
+  "project": {
+    "id": "PRD-001",
+    "name": "Synthetic budgeting app",
+    "summary": "Sri Lankan household budgeting tool importing user-approved transaction notifications and SMS",
+    "stage": "prototype",
+    "product_types": [
+      "mobile_app"
+    ],
+    "business_model": "subscription and free tier",
+    "source": "developer_reported"
+  },
+  "distribution": {
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "channels": [
+      "google_play",
+      "apple_app_store"
+    ],
+    "business_country_codes": [
+      "LK"
+    ],
+    "target_country_codes": [
+      "LK"
+    ],
+    "accessible_country_codes": [],
+    "access_restriction": "unknown",
+    "notes": "Do not infer applicable law from accessibility alone"
+  },
+  "actors": [
+    {
+      "id": "ACT-0001",
+      "role": "Household budget member",
+      "age_band": "adult",
+      "account_relationship": "User and financial data subject",
+      "notes": "May share selected goals with family",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "features": [
+    {
+      "id": "FEAT-0001",
+      "name": "Transaction import",
+      "description": "Android may parse transaction messages or notification text",
+      "state": "planned",
+      "actor_ids": [
+        "ACT-0001"
+      ],
+      "risk_domains": [
+        "privacy",
+        "permissions",
+        "finance",
+        "platform_policy"
+      ],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "data_categories": [
+    {
+      "id": "DATA-0001",
+      "name": "Transaction merchant, amount and timestamp",
+      "subject_actor_ids": [
+        "ACT-0001"
+      ],
+      "identifiability": "indirect",
+      "sensitivity": "potentially_sensitive",
+      "retention": "Unknown",
+      "deletion": "Unknown",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "data_flows": [
+    {
+      "id": "FLOW-0001",
+      "feature_ids": [
+        "FEAT-0001"
+      ],
+      "data_category_ids": [
+        "DATA-0001"
+      ],
+      "subject_actor_ids": [
+        "ACT-0001"
+      ],
+      "from": "Android user-authorized source",
+      "to": "Local transaction parser",
+      "purpose": "Build budget analytics",
+      "third_party_id": null,
+      "cross_border": "unknown",
+      "countries": [],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "third_parties": [],
+  "jurisdictions": [
+    {
+      "id": "JUR-0001",
+      "country_code": "LK",
+      "relationship": [
+        "business_location",
+        "user_targeting"
+      ],
+      "applicability": "research_needed",
+      "rationale": "Business and target market; check effective law provisions",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "claims": [],
+  "unknowns": [
+    {
+      "id": "UNK-0001",
+      "question": "Does implementation use READ_SMS, notification listener, or explicit import?",
+      "risk_if_unresolved": "Potential distribution permission or data minimization issue",
+      "priority": "high",
+      "status": "open",
+      "related_ids": [
+        "FEAT-0001"
+      ],
+      "owner": "Android lead",
+      "next_action": "Inspect Android manifest, data parsing code and official Google Play policy"
+    }
+  ],
+  "risk_signals": [
+    {
+      "id": "SIG-0001",
+      "domain": "permissions",
+      "trigger": "SMS or notification-based transaction capture",
+      "potential_impact": "high",
+      "related_ids": [
+        "FEAT-0001",
+        "UNK-0001"
+      ],
+      "status": "hypothesis"
+    }
+  ],
+  "interview": {
+    "status": "in_progress",
+    "current_focus": null,
+    "question_history": [],
+    "coverage": [
+      {
+        "domain": "product_and_business",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "actors_and_age",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "markets_and_distribution",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "features_and_content",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "data_inventory_and_flows",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "device_permissions_and_tracking",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "ai_and_third_parties",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "security_and_access",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "payments_and_marketing",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "regulated_activities_and_ip",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "retention_rights_and_operations",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "accessibility_and_user_harm",
+        "status": "not_assessed",
+        "reason": ""
+      }
+    ],
+    "next_questions": [],
+    "last_updated": null
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.0.0",
+  "project": {
+    "id": "PRD-001",
+    "name": "Synthetic children AI learning app",
+    "summary": "Parent-managed lessons for ages 3–8 with external AI lesson generation and subscriptions",
+    "stage": "development",
+    "product_types": [
+      "mobile_app",
+      "ai_system"
+    ],
+    "business_model": "subscriptions",
+    "source": "developer_reported"
+  },
+  "distribution": {
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "channels": [
+      "apple_app_store",
+      "google_play"
+    ],
+    "business_country_codes": [
+      "LK"
+    ],
+    "target_country_codes": [
+      "LK",
+      "US",
+      "DE"
+    ],
+    "accessible_country_codes": [],
+    "access_restriction": "unknown",
+    "notes": "Do not infer applicable law from accessibility alone"
+  },
+  "actors": [
+    {
+      "id": "ACT-0001",
+      "role": "Child learner",
+      "age_band": "under_13",
+      "account_relationship": "Uses a parent-managed profile",
+      "notes": "Data subject, not payer",
+      "source": "developer_reported",
+      "confidence": "reported"
+    },
+    {
+      "id": "ACT-0002",
+      "role": "Parent",
+      "age_band": "adult",
+      "account_relationship": "Creates account, subscribes, manages learner",
+      "notes": "Payer and account holder; not the only data subject",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "features": [
+    {
+      "id": "FEAT-0001",
+      "name": "AI lesson generation",
+      "description": "Sends prompts derived from learner responses to provider",
+      "state": "planned",
+      "actor_ids": [
+        "ACT-0001"
+      ],
+      "risk_domains": [
+        "children",
+        "privacy",
+        "ai"
+      ],
+      "source": "developer_reported",
+      "confidence": "reported"
+    },
+    {
+      "id": "FEAT-0002",
+      "name": "Subscriptions",
+      "description": "Parents pay for content",
+      "state": "implemented",
+      "actor_ids": [
+        "ACT-0002"
+      ],
+      "risk_domains": [
+        "payments",
+        "platform_policy"
+      ],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "data_categories": [
+    {
+      "id": "DATA-0001",
+      "name": "Learning responses and progress",
+      "subject_actor_ids": [
+        "ACT-0001"
+      ],
+      "identifiability": "unknown",
+      "sensitivity": "unknown",
+      "retention": "Unknown",
+      "deletion": "Unknown",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "data_flows": [
+    {
+      "id": "FLOW-0001",
+      "feature_ids": [
+        "FEAT-0001"
+      ],
+      "data_category_ids": [
+        "DATA-0001"
+      ],
+      "subject_actor_ids": [
+        "ACT-0001"
+      ],
+      "from": "App/backend",
+      "to": "External AI inference API",
+      "purpose": "Generate lessons",
+      "third_party_id": "VEND-0001",
+      "cross_border": "unknown",
+      "countries": [],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "third_parties": [
+    {
+      "id": "VEND-0001",
+      "name": "Example AI provider (unspecified)",
+      "service": "Lesson inference",
+      "data_category_ids": [
+        "DATA-0001"
+      ],
+      "contract_status": "unknown",
+      "processing_locations": [],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "jurisdictions": [
+    {
+      "id": "JUR-0001",
+      "country_code": "US",
+      "relationship": [
+        "user_targeting"
+      ],
+      "applicability": "research_needed",
+      "rationale": "Intended market; children use product",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "claims": [
+    {
+      "id": "CLM-0001",
+      "statement": "Provider does not train models on user data",
+      "source": "developer_reported",
+      "verification": "unverified",
+      "evidence_refs": [],
+      "related_ids": [
+        "VEND-0001"
+      ],
+      "notes": "Provider contract not reviewed"
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "UNK-0001",
+      "question": "Which child data reaches the provider and what are provider retention/training terms?",
+      "risk_if_unresolved": "Children and third-party processing may need additional controls",
+      "priority": "high",
+      "status": "research_needed",
+      "related_ids": [
+        "FLOW-0001",
+        "VEND-0001",
+        "CLM-0001"
+      ],
+      "owner": "Product owner",
+      "next_action": "Review API payloads and official provider terms, then verify legal requirements"
+    }
+  ],
+  "risk_signals": [
+    {
+      "id": "SIG-0001",
+      "domain": "children",
+      "trigger": "Under-13 users and external AI data flow",
+      "potential_impact": "high",
+      "related_ids": [
+        "ACT-0001",
+        "FLOW-0001"
+      ],
+      "status": "requires_research"
+    }
+  ],
+  "interview": {
+    "status": "in_progress",
+    "current_focus": null,
+    "question_history": [],
+    "coverage": [
+      {
+        "domain": "product_and_business",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "actors_and_age",
+        "status": "in_progress",
+        "reason": "Parent/child split documented; age/consent needs follow-up"
+      },
+      {
+        "domain": "markets_and_distribution",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "features_and_content",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "data_inventory_and_flows",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "device_permissions_and_tracking",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "ai_and_third_parties",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "security_and_access",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "payments_and_marketing",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "regulated_activities_and_ip",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "retention_rights_and_operations",
+        "status": "not_assessed",
+        "reason": ""
+      },
+      {
+        "domain": "accessibility_and_user_harm",
+        "status": "not_assessed",
+        "reason": ""
+      }
+    ],
+    "next_questions": [],
+    "last_updated": null
+  }
+}
