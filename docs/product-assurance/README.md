@@ -1,4 +1,4 @@
-# Product assurance — starter v0.1.0
+# Product assurance — workspace v2 starter
 
 **First implemented skill:** `cross-examine` — the adaptive product-discovery interrogator.
 
@@ -12,7 +12,8 @@ This is the **first usable increment**, not the complete seven-skill product ass
 - [Workspace schema](../../skills/cross-examine/assets/workspace.schema.json) and [initial template](../../skills/cross-examine/assets/workspace.template.json).
 - [Workspace helper](../../skills/cross-examine/scripts/workspace.py) for initialization, structural validation and progress summaries.
 - [Local Python installer](../../scripts/install_cross_examine.py) for copying the skill into project agent directories.
-- [Synthetic examples](../../examples/cross-examine/) for children + AI, personal finance and multi-tenant SaaS.
+- [Runtime requirements](../../skills/cross-examine/requirements.txt) and [setup instructions](../../skills/cross-examine/references/runtime-setup.md) included with installations.
+- [Synthetic examples](../../examples/cross-examine/) for children + AI, personal finance, multi-tenant SaaS and a completed discovery record for a simple offline timer.
 - [Workspace tests](../../tests/cross-examine/) and [pending agent evaluations](../../evals/cross-examine/agent-evaluation.md).
 
 ## Install in a project
@@ -58,18 +59,20 @@ Continue answering interview questions. In an agent with file-editing support, `
 
 ## Validate and view progress
 
-Full JSON Schema validation needs Python 3.10+ and `jsonschema>=4.21,<5`. In the product project, create or use an appropriate Python environment. For a dedicated environment:
+Full JSON Schema validation needs Python 3.10+ and the installed skill's bundled requirements. In the product project, create or use an appropriate Python environment. For a dedicated environment:
 
 ```bash
 python3 -m venv .venv
-.venv/bin/python -m pip install 'jsonschema>=4.21,<5'
+.venv/bin/python -m pip install -r .agents/skills/cross-examine/requirements.txt
 .venv/bin/python .agents/skills/cross-examine/scripts/workspace.py validate --project-root .
 .venv/bin/python .agents/skills/cross-examine/scripts/workspace.py status --project-root .
 ```
 
 Use your installed skill path if it differs from the Codex/Cursor path shown above. Use a supported executable such as `python3.12` when your default `python3` is older than 3.10.
 
-`init` and `status` use only Python's standard library. `validate` additionally checks stable IDs, cross-entity references, and domain coverage duplication. Unknown/empty values have explicit meanings; **an empty array does not mean no data is processed**.
+`init` and `status` use only Python's standard library. `status` explicitly reports an unvalidated snapshot. `validate` checks stable IDs, cross-entity references, coverage reasons, evidence fields and minimum discovery-completion records. It does not inspect the contents or truth of referenced evidence. Unknown/empty values have explicit meanings; **an empty array does not mean no data is processed**.
+
+Existing schema `1.0.0` workspaces require the [explicit v2 migration procedure](../../skills/cross-examine/references/workspace-contract.md#migrating-v1-workspaces). Migration writes a separate candidate, preserves source records and IDs, and reports unsupported completion or verification states for review.
 
 ## Run included tests
 
@@ -78,10 +81,11 @@ From the skills repository root, with a Python 3.10+ environment:
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-dev.txt
-.venv/bin/python -m unittest discover -s tests/cross-examine -v
+.venv/bin/python scripts/validate.py
+.venv/bin/python scripts/check_install.py
 ```
 
-Tests verify the supplied synthetic fixtures and workspace invariants. They **do not** validate legal conclusions or agent interviewing quality. [Live agent evaluations](../../evals/cross-examine/agent-evaluation.md) are a later milestone. See [CONTRIBUTING.md](../../CONTRIBUTING.md) for contribution guidance.
+Validation includes every test suite; installation checks additionally need Node.js 22.20+. Tests verify the supplied synthetic fixtures and workspace invariants. They **do not** validate legal conclusions or agent interviewing quality. [Live agent evaluations](../../evals/cross-examine/agent-evaluation.md) are a later milestone. See [CONTRIBUTING.md](../../CONTRIBUTING.md) for CI and contribution guidance.
 
 ## Security and limitations
 

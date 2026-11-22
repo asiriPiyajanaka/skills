@@ -1,10 +1,12 @@
 # Product Assurance Skills roadmap
 
-## Implemented in v0.1.0
+## Implemented in the current starter
 
 1. **cross-examine** — adaptive question-driven discovery and risk hypothesis generation.
-2. **Shared discovery contract v1** — validated JSON profile with actors, markets, features, data, flows, vendors, claims, risk signals and unknowns.
-3. **Three synthetic scenario fixtures** and structural tests.
+2. **Discovery contract v2** — validated JSON profile with actors, markets, features, data, flows, vendors, claims, risk signals and unknowns; explicit evidence provenance and minimum completion records.
+3. **Four synthetic scenario fixtures** and structural/regression tests, including a completed discovery profile and cases for contradictions, resumption, missing dependencies and invalid inputs.
+4. **Explicit v1 migration** — writes a reviewable v2 candidate without overwriting the source or fabricating evidence.
+5. **Repository validation and CI** — Python 3.10/3.14 test matrix, temporary-project installs, detached runtime checks, and anonymous public-commit installation after default-branch pushes.
 
 ## Planned; not implemented
 
@@ -19,7 +21,7 @@
 
 ## Next engineering tasks
 
-1. Build deterministic discovery interview evaluations across the children, finance and SaaS fixtures (including adversarial answers and contradictions).
+1. Execute repeatable agent interview evaluations across the children, finance and SaaS scenarios, including adversarial answers and contradictions; record observed outcomes rather than matching exact wording.
 2. Refine interview state transitions and stable ID reconciliation based on actual Codex/Claude/Cursor runs.
 3. Design `rule-hunter` requirement/evidence contract: effective dates, sources, legal versus platform policies, verified applicability, counter-evidence and review dates.
 4. Add a separate, approval-protected evidence and findings ledger before building release gates.
@@ -27,4 +29,6 @@
 
 ## Versioning expectations
 
-Contract `schema_version` is `1.0.0`. Breaking changes require an explicit migration. New skills consume and append their own records rather than silently changing developer facts. Every read/modify/write step should validate afterward and preserve git diffs.
+Contract `schema_version` is `2.0.0`. Version 2 introduces optional fact evidence references/review notes and stricter coverage, verification, unknown-action and completion requirements. Use [the explicit migration procedure](../../skills/cross-examine/references/workspace-contract.md#migrating-v1-workspaces) for existing v1 files. Migration changes the candidate's version while preserving its other records; invalid old states remain visible for repair rather than being silently downgraded.
+
+Breaking changes require an explicit migration. New skills consume and append their own records rather than silently changing developer facts. Every read/modify/write step should validate afterward and preserve reviewable diffs. The full requirement, evidence and findings ledgers for later skills remain to be designed; v2 evidence references are discovery provenance, not those ledgers.

@@ -30,7 +30,7 @@ def main():
                 dest.unlink()
             else:
                 shutil.rmtree(dest)
-        shutil.copytree(SOURCE, dest)
+        shutil.copytree(SOURCE, dest, ignore=shutil.ignore_patterns('__pycache__', '*.pyc', '.DS_Store'))
         print(f"Installed: {dest}")
     print("Start a fresh agent conversation or reload skills, then invoke cross-examine with your product idea.")
 

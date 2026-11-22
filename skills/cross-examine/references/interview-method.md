@@ -10,6 +10,8 @@
 6. If response has "don't know", create one `UNK-####` with next action and stop pressing the same question without new context.
 7. Reassess prioritization and repeat. Do not march down topic numbers.
 
+On resumption, read saved history, coverage reasons, unresolved claims and priority unknowns first. Do not repeat answered questions without a concrete change, contradiction or missing detail. Append new history and preserve IDs; a request to stop should produce a paused, scoped handoff rather than another mandatory question.
+
 ## Domain coverage
 
 Capture a reason for every domain marked sufficient or not applicable:
@@ -36,6 +38,8 @@ Capture a reason for every domain marked sufficient or not applicable:
 - important third-party and platform assumptions have explicit provenance;
 - a new question would no longer materially change the initial research/audit scope.
 
+The core profile must include a substantive name and summary, product types, actual actors, actor-linked features, and distribution platforms/channels. Record material data flows when the inventory contains data, append sanitized question history, and update the timestamp. These minimum checks prevent completion of an empty template by changing coverage flags. A domain can be sufficiently characterized while a clearly scoped research task remains; use `blocked_on_unknown` when the missing answer prevents characterizing the domain itself.
+
 When uncertain, `paused` is better than falsely declaring discovery complete. The user can always choose to end questioning and receive an incomplete handoff.
 
 ## Contradictions
@@ -45,6 +49,7 @@ If a developer says "no user data leaves the device" but code observation shows 
 2. Record the specific observed flow as `repository_observed` / `observed`, and link it to a research unknown if needed.
 3. Explain the discrepancy without accusing the developer; ask which behavior is intended and whether the implementation is current.
 4. Do not silently erase earlier answers. Retain question history as an audit trail.
+5. A `contradicted` claim needs the reviewed evidence reference and explanatory notes. If the observation only raises doubt, keep the claim `unverified`, record the observation and a reconciliation unknown, and avoid claiming a deployed defect.
 
 ## Handoff format
 
@@ -54,6 +59,6 @@ Return these paragraphs or sections in the conversation, and persist equivalent 
 - Candidate jurisdictions: with *rationale*, not legal conclusions.
 - Risk signals: clearly labeled conditional hypotheses.
 - Priority unknowns: impact and specific next research/evidence action.
-- Next workflow: what `rule-hunter` should verify, what `prove-it` should inspect later.
+- Next workflow: specific tasks for `rule-hunter` and `prove-it`, linked to relevant fact/claim/unknown IDs, with missing inputs and evidence needs. These are handoffs; neither skill is implemented yet.
 
 Never claim "approved for launch" or produce generic legal documents from unverified facts.

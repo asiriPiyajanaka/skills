@@ -6,7 +6,7 @@ My public collection of reusable skills for coding agents. Each skill lives in i
 
 | Skill | What it does | Status |
 | --- | --- | --- |
-| [cross-examine](skills/cross-examine/SKILL.md) | Uses adaptive questions to record product facts, assumptions, data flows, risks and unknowns. | Starter v0.1.0; live agent evaluations pending. |
+| [cross-examine](skills/cross-examine/SKILL.md) | Uses adaptive questions to record product facts, assumptions, data flows, risks and unknowns. | Workspace v2 tooling and installation checks; live agent evaluations pending. |
 
 `cross-examine` is the first skill in the [product-assurance workflow](docs/product-assurance/README.md). Related skills are described in its [roadmap](docs/product-assurance/ROADMAP.md); they are not yet implemented or installable.
 
@@ -31,7 +31,7 @@ Installation is project-local by default. Add `--global` to install for your use
 npx skills add asiriPiyajanaka/skills --skill cross-examine --agent codex
 ```
 
-The current installer requires Node.js 22.20 or later. Each skill may also have its own runtime requirements: `cross-examine` uses Python 3.10+ and requires `jsonschema` for workspace validation. See the [product-assurance guide](docs/product-assurance/README.md) for setup and the retained Python installer for local copies.
+The current installer requires Node.js 22.20 or later. Each skill may also have its own runtime requirements: `cross-examine` uses Python 3.10+ and bundles a [requirements file](skills/cross-examine/requirements.txt) for workspace validation. See the [product-assurance guide](docs/product-assurance/README.md) for setup and the retained Python installer for local copies.
 
 ## Try cross-examine
 
@@ -59,6 +59,8 @@ tests/
 evals/
 └── cross-examine/          # Agent behavior evaluation scenarios
 scripts/
+├── validate.py             # Static checks and discovered test suites
+├── check_install.py        # Temporary-project installation checks
 └── install_cross_examine.py
 ```
 
@@ -66,7 +68,18 @@ Skills use the [Agent Skills format](https://agentskills.io/specification): a `S
 
 ## Contribute
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, the existing test command and how to add a skill. Repository-wide validation and CI are planned; they are not configured yet.
+Use Python 3.10+ to set up validation and run the collection's checks:
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python scripts/validate.py
+.venv/bin/python scripts/check_install.py
+```
+
+The [GitHub Actions workflow](.github/workflows/validate.yml) runs validation, tests and checkout installation on Python 3.10 and 3.14. A push to the default branch also checks installation of that public commit without GitHub credentials. See [CONTRIBUTING.md](CONTRIBUTING.md) for details and how to add a skill.
+
+Existing schema v1 product workspaces need an [explicit migration candidate](skills/cross-examine/references/workspace-contract.md#migrating-v1-workspaces). The migration command preserves the source and reports records requiring review under the stricter contract.
 
 ## License
 

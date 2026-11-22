@@ -1,0 +1,211 @@
+{
+  "schema_version": "2.0.0",
+  "project": {
+    "id": "PRD-001",
+    "name": "Synthetic offline countdown timer",
+    "summary": "Single-user countdown timer; the developer reports no accounts, network calls or persistence.",
+    "stage": "idea",
+    "product_types": [
+      "web_app"
+    ],
+    "business_model": "Free download",
+    "source": "developer_reported"
+  },
+  "distribution": {
+    "platforms": [
+      "web"
+    ],
+    "channels": [
+      "direct_web"
+    ],
+    "business_country_codes": [
+      "LK"
+    ],
+    "target_country_codes": [
+      "LK"
+    ],
+    "accessible_country_codes": [],
+    "access_restriction": "open",
+    "notes": "Developer describes a static downloadable page intended for Sri Lankan users; accessibility is not a legal applicability decision."
+  },
+  "actors": [
+    {
+      "id": "ACT-0001",
+      "role": "Person using the timer",
+      "age_band": "mixed",
+      "account_relationship": "No account",
+      "notes": "No identity or age is requested according to the developer.",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "features": [
+    {
+      "id": "FEAT-0001",
+      "name": "Local countdown",
+      "description": "Set a duration and receive a visual alert in the same page.",
+      "state": "implemented",
+      "actor_ids": [
+        "ACT-0001"
+      ],
+      "risk_domains": [
+        "privacy",
+        "accessibility"
+      ],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "data_categories": [
+    {
+      "id": "DATA-0001",
+      "name": "Transient countdown duration",
+      "subject_actor_ids": [
+        "ACT-0001"
+      ],
+      "identifiability": "anonymous_claimed",
+      "sensitivity": "ordinary",
+      "retention": "Memory until the page closes, per developer",
+      "deletion": "Closing or resetting the timer clears the value, per developer",
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "data_flows": [
+    {
+      "id": "FLOW-0001",
+      "feature_ids": [
+        "FEAT-0001"
+      ],
+      "data_category_ids": [
+        "DATA-0001"
+      ],
+      "subject_actor_ids": [
+        "ACT-0001"
+      ],
+      "from": "Timer input",
+      "to": "In-memory countdown in the same browser page",
+      "purpose": "Run the user-selected countdown",
+      "third_party_id": null,
+      "cross_border": "no",
+      "countries": [],
+      "source": "developer_reported",
+      "confidence": "reported"
+    }
+  ],
+  "third_parties": [],
+  "jurisdictions": [],
+  "claims": [],
+  "unknowns": [],
+  "risk_signals": [],
+  "interview": {
+    "status": "discovery_complete",
+    "current_focus": null,
+    "question_history": [
+      {
+        "id": "Q-0001",
+        "question": "Who uses the timer and how is it offered?",
+        "answer_summary": "A free direct-web timer for individual users; no accounts.",
+        "answered_at": "2026-11-22T09:45:00+05:30",
+        "updated_ids": [
+          "PRD-001",
+          "ACT-0001",
+          "FEAT-0001"
+        ]
+      },
+      {
+        "id": "Q-0002",
+        "question": "Which inputs are retained or sent anywhere?",
+        "answer_summary": "Developer reports only transient countdown duration in local memory, with no persistence or network calls.",
+        "answered_at": "2026-11-22T09:50:00+05:30",
+        "updated_ids": [
+          "DATA-0001",
+          "FLOW-0001"
+        ]
+      },
+      {
+        "id": "Q-0003",
+        "question": "Which markets, vendors, commercial features and other material behaviors are involved?",
+        "answer_summary": "Developer reports business and targeting in LK, no vendors, payments, marketing or sector-specific advice, and self-authored assets.",
+        "answered_at": "2026-11-22T09:55:00+05:30",
+        "updated_ids": [
+          "PRD-001"
+        ]
+      },
+      {
+        "id": "Q-0004",
+        "question": "What access, retention and accessibility behaviors should the handoff record?",
+        "answer_summary": "No shared data or privileged roles; reset/close clears memory; keyboard input and visual alerts are reported for later inspection.",
+        "answered_at": "2026-11-22T10:00:00+05:30",
+        "updated_ids": [
+          "FEAT-0001",
+          "DATA-0001"
+        ]
+      }
+    ],
+    "coverage": [
+      {
+        "domain": "product_and_business",
+        "status": "sufficient",
+        "reason": "Developer described a free, single-user countdown timer and its current implementation stage."
+      },
+      {
+        "domain": "actors_and_age",
+        "status": "sufficient",
+        "reason": "The timer has one user role, no account and no age collection; a mixed audience is recorded."
+      },
+      {
+        "domain": "markets_and_distribution",
+        "status": "sufficient",
+        "reason": "Business and intended market are recorded as LK; the static page is distributed directly on the web."
+      },
+      {
+        "domain": "features_and_content",
+        "status": "sufficient",
+        "reason": "The only described capability is a local countdown and visual alert; no uploads, sharing or generated content."
+      },
+      {
+        "domain": "data_inventory_and_flows",
+        "status": "sufficient",
+        "reason": "Transient duration input is inventoried and linked to its reported local in-memory flow."
+      },
+      {
+        "domain": "device_permissions_and_tracking",
+        "status": "sufficient",
+        "reason": "Developer reports no device permissions, advertising identifiers, analytics or network calls."
+      },
+      {
+        "domain": "ai_and_third_parties",
+        "status": "sufficient",
+        "reason": "Developer reports no AI, third-party SDKs or external processing in the downloaded timer."
+      },
+      {
+        "domain": "security_and_access",
+        "status": "sufficient",
+        "reason": "Developer reports no accounts, privileged roles, backend or shared tenant data; implementation remains reported."
+      },
+      {
+        "domain": "payments_and_marketing",
+        "status": "sufficient",
+        "reason": "Developer reports a free download without subscriptions, payments, advertisements or marketing collection."
+      },
+      {
+        "domain": "regulated_activities_and_ip",
+        "status": "sufficient",
+        "reason": "Developer describes a generic timer, no sector-specific advice, and self-authored code/assets; no legal conclusions."
+      },
+      {
+        "domain": "retention_rights_and_operations",
+        "status": "sufficient",
+        "reason": "Developer describes transient memory only, cleared on reset/close, and no stored user records or backups."
+      },
+      {
+        "domain": "accessibility_and_user_harm",
+        "status": "sufficient",
+        "reason": "Developer describes keyboard input and a visual alert; accessibility behavior remains a reported claim for later inspection."
+      }
+    ],
+    "next_questions": [],
+    "last_updated": "2026-11-22T10:00:00+05:30"
+  }
+}

@@ -1,91 +1,1163 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:product-assurance:workspace:v1",
-  "title": "Product Assurance Discovery Workspace v1",
+  "$id": "urn:product-assurance:workspace:v2",
+  "title": "Product Assurance Discovery Workspace v2",
   "description": "Developer-reported and observed product facts, risk hypotheses and interview state. This is not a legal compliance certification.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "project", "distribution", "actors", "features", "data_categories", "data_flows", "third_parties", "jurisdictions", "claims", "unknowns", "risk_signals", "interview"],
+  "required": [
+    "schema_version",
+    "project",
+    "distribution",
+    "actors",
+    "features",
+    "data_categories",
+    "data_flows",
+    "third_parties",
+    "jurisdictions",
+    "claims",
+    "unknowns",
+    "risk_signals",
+    "interview"
+  ],
   "properties": {
-    "schema_version": {"const": "1.0.0"},
+    "schema_version": {
+      "const": "2.0.0"
+    },
     "project": {
-      "type": "object", "additionalProperties": false,
-      "required": ["id", "name", "summary", "stage", "product_types", "business_model", "source"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "summary",
+        "stage",
+        "product_types",
+        "business_model",
+        "source"
+      ],
       "properties": {
-        "id": {"const": "PRD-001"},
-        "name": {"$ref": "#/$defs/text"},
-        "summary": {"$ref": "#/$defs/text"},
-        "stage": {"enum": ["idea", "prototype", "development", "pre_release", "released", "unknown"]},
-        "product_types": {"type": "array", "uniqueItems": true, "items": {"enum": ["mobile_app", "web_app", "saas", "desktop_app", "api", "ai_system", "embedded", "other"]}},
-        "business_model": {"$ref": "#/$defs/text"},
-        "source": {"$ref": "#/$defs/source"}
+        "id": {
+          "const": "PRD-001"
+        },
+        "name": {
+          "$ref": "#/$defs/text"
+        },
+        "summary": {
+          "$ref": "#/$defs/text"
+        },
+        "stage": {
+          "enum": [
+            "idea",
+            "prototype",
+            "development",
+            "pre_release",
+            "released",
+            "unknown"
+          ]
+        },
+        "product_types": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "mobile_app",
+              "web_app",
+              "saas",
+              "desktop_app",
+              "api",
+              "ai_system",
+              "embedded",
+              "other"
+            ]
+          }
+        },
+        "business_model": {
+          "$ref": "#/$defs/text"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        }
       }
     },
     "distribution": {
-      "type": "object", "additionalProperties": false,
-      "required": ["platforms", "channels", "business_country_codes", "target_country_codes", "accessible_country_codes", "access_restriction", "notes"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platforms",
+        "channels",
+        "business_country_codes",
+        "target_country_codes",
+        "accessible_country_codes",
+        "access_restriction",
+        "notes"
+      ],
       "properties": {
-        "platforms": {"type": "array", "uniqueItems": true, "items": {"enum": ["ios", "android", "web", "windows", "macos", "linux", "server", "embedded", "other"]}},
-        "channels": {"type": "array", "uniqueItems": true, "items": {"enum": ["apple_app_store", "google_play", "direct_web", "enterprise", "other", "unknown"]}},
-        "business_country_codes": {"$ref": "#/$defs/countries"},
-        "target_country_codes": {"$ref": "#/$defs/countries"},
-        "accessible_country_codes": {"$ref": "#/$defs/countries"},
-        "access_restriction": {"enum": ["geo_blocked", "invite_only", "open", "other", "unknown"]},
-        "notes": {"type": "string"}
+        "platforms": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "ios",
+              "android",
+              "web",
+              "windows",
+              "macos",
+              "linux",
+              "server",
+              "embedded",
+              "other"
+            ]
+          }
+        },
+        "channels": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "apple_app_store",
+              "google_play",
+              "direct_web",
+              "enterprise",
+              "other",
+              "unknown"
+            ]
+          }
+        },
+        "business_country_codes": {
+          "$ref": "#/$defs/countries"
+        },
+        "target_country_codes": {
+          "$ref": "#/$defs/countries"
+        },
+        "accessible_country_codes": {
+          "$ref": "#/$defs/countries"
+        },
+        "access_restriction": {
+          "enum": [
+            "geo_blocked",
+            "invite_only",
+            "open",
+            "other",
+            "unknown"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
       }
     },
-    "actors": {"type": "array", "items": {"$ref": "#/$defs/actor"}},
-    "features": {"type": "array", "items": {"$ref": "#/$defs/feature"}},
-    "data_categories": {"type": "array", "items": {"$ref": "#/$defs/data_category"}},
-    "data_flows": {"type": "array", "items": {"$ref": "#/$defs/data_flow"}},
-    "third_parties": {"type": "array", "items": {"$ref": "#/$defs/third_party"}},
-    "jurisdictions": {"type": "array", "items": {"$ref": "#/$defs/jurisdiction"}},
-    "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
-    "unknowns": {"type": "array", "items": {"$ref": "#/$defs/unknown"}},
-    "risk_signals": {"type": "array", "items": {"$ref": "#/$defs/risk_signal"}},
-    "interview": {"$ref": "#/$defs/interview"}
+    "actors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/actor"
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/feature"
+      }
+    },
+    "data_categories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/data_category"
+      }
+    },
+    "data_flows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/data_flow"
+      }
+    },
+    "third_parties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/third_party"
+      }
+    },
+    "jurisdictions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/jurisdiction"
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unknown"
+      }
+    },
+    "risk_signals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/risk_signal"
+      }
+    },
+    "interview": {
+      "$ref": "#/$defs/interview"
+    }
   },
   "$defs": {
-    "text": {"type": "string", "minLength": 1},
-    "countries": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Z]{2}$"}},
-    "source": {"enum": ["developer_reported", "repository_observed", "document_reviewed", "vendor_reported", "unknown"]},
-    "confidence": {"enum": ["reported", "observed", "verified", "unknown"]},
-    "id_list": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
-    "risk_domain": {"enum": ["children", "privacy", "security", "ai", "finance", "health", "biometrics", "permissions", "tracking", "content_ip", "consumer", "payments", "accessibility", "platform_policy", "operations", "employment", "other"]},
-    "actor": {"type": "object", "additionalProperties": false, "required": ["id", "role", "age_band", "account_relationship", "notes", "source", "confidence"], "properties": {
-      "id": {"type": "string", "pattern": "^ACT-[0-9]{4}$"}, "role": {"$ref": "#/$defs/text"}, "age_band": {"enum": ["under_13", "13_to_15", "16_to_17", "adult", "mixed", "unknown"]}, "account_relationship": {"type": "string"}, "notes": {"type": "string"}, "source": {"$ref": "#/$defs/source"}, "confidence": {"$ref": "#/$defs/confidence"}
-    }},
-    "feature": {"type": "object", "additionalProperties": false, "required": ["id", "name", "description", "state", "actor_ids", "risk_domains", "source", "confidence"], "properties": {
-      "id": {"type": "string", "pattern": "^FEAT-[0-9]{4}$"}, "name": {"$ref": "#/$defs/text"}, "description": {"type": "string"}, "state": {"enum": ["planned", "implemented", "disabled", "unknown"]}, "actor_ids": {"$ref": "#/$defs/id_list"}, "risk_domains": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/risk_domain"}}, "source": {"$ref": "#/$defs/source"}, "confidence": {"$ref": "#/$defs/confidence"}
-    }},
-    "data_category": {"type": "object", "additionalProperties": false, "required": ["id", "name", "subject_actor_ids", "identifiability", "sensitivity", "retention", "deletion", "source", "confidence"], "properties": {
-      "id": {"type": "string", "pattern": "^DATA-[0-9]{4}$"}, "name": {"$ref": "#/$defs/text"}, "subject_actor_ids": {"$ref": "#/$defs/id_list"}, "identifiability": {"enum": ["direct", "indirect", "anonymous_claimed", "unknown"]}, "sensitivity": {"enum": ["ordinary", "potentially_sensitive", "sensitive", "unknown"]}, "retention": {"type": "string"}, "deletion": {"type": "string"}, "source": {"$ref": "#/$defs/source"}, "confidence": {"$ref": "#/$defs/confidence"}
-    }},
-    "data_flow": {"type": "object", "additionalProperties": false, "required": ["id", "feature_ids", "data_category_ids", "subject_actor_ids", "from", "to", "purpose", "third_party_id", "cross_border", "countries", "source", "confidence"], "properties": {
-      "id": {"type": "string", "pattern": "^FLOW-[0-9]{4}$"}, "feature_ids": {"$ref": "#/$defs/id_list"}, "data_category_ids": {"$ref": "#/$defs/id_list"}, "subject_actor_ids": {"$ref": "#/$defs/id_list"}, "from": {"$ref": "#/$defs/text"}, "to": {"$ref": "#/$defs/text"}, "purpose": {"type": "string"}, "third_party_id": {"type": ["string", "null"]}, "cross_border": {"enum": ["yes", "no", "unknown"]}, "countries": {"$ref": "#/$defs/countries"}, "source": {"$ref": "#/$defs/source"}, "confidence": {"$ref": "#/$defs/confidence"}
-    }},
-    "third_party": {"type": "object", "additionalProperties": false, "required": ["id", "name", "service", "data_category_ids", "contract_status", "processing_locations", "source", "confidence"], "properties": {
-      "id": {"type": "string", "pattern": "^VEND-[0-9]{4}$"}, "name": {"$ref": "#/$defs/text"}, "service": {"type": "string"}, "data_category_ids": {"$ref": "#/$defs/id_list"}, "contract_status": {"enum": ["reviewed", "not_reviewed", "not_applicable", "unknown"]}, "processing_locations": {"$ref": "#/$defs/countries"}, "source": {"$ref": "#/$defs/source"}, "confidence": {"$ref": "#/$defs/confidence"}
-    }},
-    "jurisdiction": {"type": "object", "additionalProperties": false, "required": ["id", "country_code", "relationship", "applicability", "rationale", "source", "confidence"], "properties": {
-      "id": {"type": "string", "pattern": "^JUR-[0-9]{4}$"}, "country_code": {"type": "string", "pattern": "^[A-Z]{2}$"}, "relationship": {"type": "array", "uniqueItems": true, "minItems": 1, "items": {"enum": ["business_location", "user_targeting", "possible_access", "data_processing", "other"]}}, "applicability": {"enum": ["candidate", "research_needed", "applicable_verified", "not_applicable_verified"]}, "rationale": {"type": "string"}, "source": {"$ref": "#/$defs/source"}, "confidence": {"$ref": "#/$defs/confidence"}
-    }},
-    "claim": {"type": "object", "additionalProperties": false, "required": ["id", "statement", "source", "verification", "evidence_refs", "related_ids", "notes"], "properties": {
-      "id": {"type": "string", "pattern": "^CLM-[0-9]{4}$"}, "statement": {"$ref": "#/$defs/text"}, "source": {"$ref": "#/$defs/source"}, "verification": {"enum": ["unverified", "partially_verified", "verified", "contradicted"]}, "evidence_refs": {"$ref": "#/$defs/id_list"}, "related_ids": {"$ref": "#/$defs/id_list"}, "notes": {"type": "string"}
-    }},
-    "unknown": {"type": "object", "additionalProperties": false, "required": ["id", "question", "risk_if_unresolved", "priority", "status", "related_ids", "owner", "next_action"], "properties": {
-      "id": {"type": "string", "pattern": "^UNK-[0-9]{4}$"}, "question": {"$ref": "#/$defs/text"}, "risk_if_unresolved": {"type": "string"}, "priority": {"enum": ["critical", "high", "medium", "low"]}, "status": {"enum": ["open", "research_needed", "resolved", "not_applicable"]}, "related_ids": {"$ref": "#/$defs/id_list"}, "owner": {"type": "string"}, "next_action": {"type": "string"}
-    }},
-    "risk_signal": {"type": "object", "additionalProperties": false, "required": ["id", "domain", "trigger", "potential_impact", "related_ids", "status"], "properties": {
-      "id": {"type": "string", "pattern": "^SIG-[0-9]{4}$"}, "domain": {"$ref": "#/$defs/risk_domain"}, "trigger": {"$ref": "#/$defs/text"}, "potential_impact": {"enum": ["critical", "high", "medium", "low", "unknown"]}, "related_ids": {"$ref": "#/$defs/id_list"}, "status": {"enum": ["hypothesis", "requires_research", "investigated", "dismissed"]}
-    }},
-    "interview": {"type": "object", "additionalProperties": false, "required": ["status", "current_focus", "question_history", "coverage", "next_questions", "last_updated"], "properties": {
-      "status": {"enum": ["not_started", "in_progress", "paused", "discovery_complete"]},
-      "current_focus": {"type": ["string", "null"]},
-      "question_history": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["id", "question", "answer_summary", "answered_at", "updated_ids"], "properties": {"id": {"type": "string", "pattern": "^Q-[0-9]{4}$"}, "question": {"$ref": "#/$defs/text"}, "answer_summary": {"type": "string"}, "answered_at": {"type": "string", "format": "date-time"}, "updated_ids": {"$ref": "#/$defs/id_list"}}}},
-      "coverage": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["domain", "status", "reason"], "properties": {"domain": {"enum": ["product_and_business", "actors_and_age", "markets_and_distribution", "features_and_content", "data_inventory_and_flows", "device_permissions_and_tracking", "ai_and_third_parties", "security_and_access", "payments_and_marketing", "regulated_activities_and_ip", "retention_rights_and_operations", "accessibility_and_user_harm"]}, "status": {"enum": ["not_assessed", "in_progress", "sufficient", "not_applicable", "blocked_on_unknown"]}, "reason": {"type": "string"}}}},
-      "next_questions": {"type": "array", "items": {"type": "string", "minLength": 1}},
-      "last_updated": {"type": ["string", "null"], "format": "date-time"}
-    }}
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "countries": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      }
+    },
+    "source": {
+      "enum": [
+        "developer_reported",
+        "repository_observed",
+        "document_reviewed",
+        "vendor_reported",
+        "unknown"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "reported",
+        "observed",
+        "verified",
+        "unknown"
+      ]
+    },
+    "id_list": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/text"
+      }
+    },
+    "risk_domain": {
+      "enum": [
+        "children",
+        "privacy",
+        "security",
+        "ai",
+        "finance",
+        "health",
+        "biometrics",
+        "permissions",
+        "tracking",
+        "content_ip",
+        "consumer",
+        "payments",
+        "accessibility",
+        "platform_policy",
+        "operations",
+        "employment",
+        "other"
+      ]
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "role",
+        "age_band",
+        "account_relationship",
+        "notes",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^ACT-[0-9]{4}$"
+        },
+        "role": {
+          "$ref": "#/$defs/text"
+        },
+        "age_band": {
+          "enum": [
+            "under_13",
+            "13_to_15",
+            "16_to_17",
+            "adult",
+            "mixed",
+            "unknown"
+          ]
+        },
+        "account_relationship": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/id_list"
+        },
+        "verification_notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "confidence": {
+                "const": "verified"
+              }
+            },
+            "required": [
+              "confidence"
+            ]
+          },
+          "then": {
+            "required": [
+              "evidence_refs",
+              "verification_notes"
+            ],
+            "properties": {
+              "evidence_refs": {
+                "minItems": 1
+              },
+              "verification_notes": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "description",
+        "state",
+        "actor_ids",
+        "risk_domains",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^FEAT-[0-9]{4}$"
+        },
+        "name": {
+          "$ref": "#/$defs/text"
+        },
+        "description": {
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "planned",
+            "implemented",
+            "disabled",
+            "unknown"
+          ]
+        },
+        "actor_ids": {
+          "$ref": "#/$defs/id_list"
+        },
+        "risk_domains": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/risk_domain"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/id_list"
+        },
+        "verification_notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "confidence": {
+                "const": "verified"
+              }
+            },
+            "required": [
+              "confidence"
+            ]
+          },
+          "then": {
+            "required": [
+              "evidence_refs",
+              "verification_notes"
+            ],
+            "properties": {
+              "evidence_refs": {
+                "minItems": 1
+              },
+              "verification_notes": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "data_category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "subject_actor_ids",
+        "identifiability",
+        "sensitivity",
+        "retention",
+        "deletion",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^DATA-[0-9]{4}$"
+        },
+        "name": {
+          "$ref": "#/$defs/text"
+        },
+        "subject_actor_ids": {
+          "$ref": "#/$defs/id_list"
+        },
+        "identifiability": {
+          "enum": [
+            "direct",
+            "indirect",
+            "anonymous_claimed",
+            "unknown"
+          ]
+        },
+        "sensitivity": {
+          "enum": [
+            "ordinary",
+            "potentially_sensitive",
+            "sensitive",
+            "unknown"
+          ]
+        },
+        "retention": {
+          "type": "string"
+        },
+        "deletion": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/id_list"
+        },
+        "verification_notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "confidence": {
+                "const": "verified"
+              }
+            },
+            "required": [
+              "confidence"
+            ]
+          },
+          "then": {
+            "required": [
+              "evidence_refs",
+              "verification_notes"
+            ],
+            "properties": {
+              "evidence_refs": {
+                "minItems": 1
+              },
+              "verification_notes": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "data_flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "feature_ids",
+        "data_category_ids",
+        "subject_actor_ids",
+        "from",
+        "to",
+        "purpose",
+        "third_party_id",
+        "cross_border",
+        "countries",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^FLOW-[0-9]{4}$"
+        },
+        "feature_ids": {
+          "$ref": "#/$defs/id_list"
+        },
+        "data_category_ids": {
+          "$ref": "#/$defs/id_list"
+        },
+        "subject_actor_ids": {
+          "$ref": "#/$defs/id_list"
+        },
+        "from": {
+          "$ref": "#/$defs/text"
+        },
+        "to": {
+          "$ref": "#/$defs/text"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "third_party_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cross_border": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown"
+          ]
+        },
+        "countries": {
+          "$ref": "#/$defs/countries"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/id_list"
+        },
+        "verification_notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "confidence": {
+                "const": "verified"
+              }
+            },
+            "required": [
+              "confidence"
+            ]
+          },
+          "then": {
+            "required": [
+              "evidence_refs",
+              "verification_notes"
+            ],
+            "properties": {
+              "evidence_refs": {
+                "minItems": 1
+              },
+              "verification_notes": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "third_party": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "service",
+        "data_category_ids",
+        "contract_status",
+        "processing_locations",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^VEND-[0-9]{4}$"
+        },
+        "name": {
+          "$ref": "#/$defs/text"
+        },
+        "service": {
+          "type": "string"
+        },
+        "data_category_ids": {
+          "$ref": "#/$defs/id_list"
+        },
+        "contract_status": {
+          "enum": [
+            "reviewed",
+            "not_reviewed",
+            "not_applicable",
+            "unknown"
+          ]
+        },
+        "processing_locations": {
+          "$ref": "#/$defs/countries"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/id_list"
+        },
+        "verification_notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "confidence": {
+                "const": "verified"
+              }
+            },
+            "required": [
+              "confidence"
+            ]
+          },
+          "then": {
+            "required": [
+              "evidence_refs",
+              "verification_notes"
+            ],
+            "properties": {
+              "evidence_refs": {
+                "minItems": 1
+              },
+              "verification_notes": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "jurisdiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "country_code",
+        "relationship",
+        "applicability",
+        "rationale",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^JUR-[0-9]{4}$"
+        },
+        "country_code": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "relationship": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "business_location",
+              "user_targeting",
+              "possible_access",
+              "data_processing",
+              "other"
+            ]
+          }
+        },
+        "applicability": {
+          "enum": [
+            "candidate",
+            "research_needed",
+            "applicable_verified",
+            "not_applicable_verified"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/id_list"
+        },
+        "verification_notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "confidence": {
+                "const": "verified"
+              }
+            },
+            "required": [
+              "confidence"
+            ]
+          },
+          "then": {
+            "required": [
+              "evidence_refs",
+              "verification_notes"
+            ],
+            "properties": {
+              "evidence_refs": {
+                "minItems": 1
+              },
+              "verification_notes": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "applicability": {
+                "enum": [
+                  "applicable_verified",
+                  "not_applicable_verified"
+                ]
+              }
+            },
+            "required": [
+              "applicability"
+            ]
+          },
+          "then": {
+            "required": [
+              "evidence_refs",
+              "verification_notes"
+            ],
+            "properties": {
+              "evidence_refs": {
+                "minItems": 1
+              },
+              "verification_notes": {
+                "$ref": "#/$defs/text"
+              },
+              "rationale": {
+                "$ref": "#/$defs/text"
+              },
+              "confidence": {
+                "const": "verified"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "statement",
+        "source",
+        "verification",
+        "evidence_refs",
+        "related_ids",
+        "notes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^CLM-[0-9]{4}$"
+        },
+        "statement": {
+          "$ref": "#/$defs/text"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "verification": {
+          "enum": [
+            "unverified",
+            "partially_verified",
+            "verified",
+            "contradicted"
+          ]
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/id_list"
+        },
+        "related_ids": {
+          "$ref": "#/$defs/id_list"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "verification": {
+                "enum": [
+                  "partially_verified",
+                  "verified",
+                  "contradicted"
+                ]
+              }
+            },
+            "required": [
+              "verification"
+            ]
+          },
+          "then": {
+            "properties": {
+              "evidence_refs": {
+                "minItems": 1
+              },
+              "notes": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "unknown": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "question",
+        "risk_if_unresolved",
+        "priority",
+        "status",
+        "related_ids",
+        "owner",
+        "next_action"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^UNK-[0-9]{4}$"
+        },
+        "question": {
+          "$ref": "#/$defs/text"
+        },
+        "risk_if_unresolved": {
+          "type": "string"
+        },
+        "priority": {
+          "enum": [
+            "critical",
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "status": {
+          "enum": [
+            "open",
+            "research_needed",
+            "resolved",
+            "not_applicable"
+          ]
+        },
+        "related_ids": {
+          "$ref": "#/$defs/id_list"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "next_action": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "open",
+                  "research_needed"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "risk_if_unresolved": {
+                "$ref": "#/$defs/text"
+              },
+              "owner": {
+                "$ref": "#/$defs/text"
+              },
+              "next_action": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "risk_signal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "domain",
+        "trigger",
+        "potential_impact",
+        "related_ids",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^SIG-[0-9]{4}$"
+        },
+        "domain": {
+          "$ref": "#/$defs/risk_domain"
+        },
+        "trigger": {
+          "$ref": "#/$defs/text"
+        },
+        "potential_impact": {
+          "enum": [
+            "critical",
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "related_ids": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/id_list"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "hypothesis",
+            "requires_research",
+            "investigated",
+            "dismissed"
+          ]
+        }
+      }
+    },
+    "interview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "current_focus",
+        "question_history",
+        "coverage",
+        "next_questions",
+        "last_updated"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not_started",
+            "in_progress",
+            "paused",
+            "discovery_complete"
+          ]
+        },
+        "current_focus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "question_history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "question",
+              "answer_summary",
+              "answered_at",
+              "updated_ids"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^Q-[0-9]{4}$"
+              },
+              "question": {
+                "$ref": "#/$defs/text"
+              },
+              "answer_summary": {
+                "type": "string"
+              },
+              "answered_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updated_ids": {
+                "$ref": "#/$defs/id_list"
+              }
+            }
+          }
+        },
+        "coverage": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "domain",
+              "status",
+              "reason"
+            ],
+            "properties": {
+              "domain": {
+                "enum": [
+                  "product_and_business",
+                  "actors_and_age",
+                  "markets_and_distribution",
+                  "features_and_content",
+                  "data_inventory_and_flows",
+                  "device_permissions_and_tracking",
+                  "ai_and_third_parties",
+                  "security_and_access",
+                  "payments_and_marketing",
+                  "regulated_activities_and_ip",
+                  "retention_rights_and_operations",
+                  "accessibility_and_user_harm"
+                ]
+              },
+              "status": {
+                "enum": [
+                  "not_assessed",
+                  "in_progress",
+                  "sufficient",
+                  "not_applicable",
+                  "blocked_on_unknown"
+                ]
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "sufficient",
+                        "not_applicable"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "reason": {
+                      "$ref": "#/$defs/text"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "next_questions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "last_updated": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    }
   }
 }
