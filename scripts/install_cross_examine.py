@@ -4,7 +4,7 @@ import argparse
 import shutil
 from pathlib import Path
 
-SOURCE = Path(__file__).resolve().parent / "skills" / "cross-examine"
+SOURCE = Path(__file__).resolve().parents[1] / "skills" / "cross-examine"
 
 
 def main():
